@@ -1,0 +1,13 @@
+.App-logo {
+    height: 35px;
+}
+
+.App-header {
+    background-color: #1D428A;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    text-align: left;
+    box-shadow: 1px 3px 5px #ccc;
+    margin-bottom: 70px;
+}
