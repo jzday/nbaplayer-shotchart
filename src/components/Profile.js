@@ -38,6 +38,7 @@ export class Profile extends React.Component {
                 <img
                     className="team-logo"
                     src={`${Team_PIC_URL_PREFIX}/${teamAbbreviation}_logo.svg`}
+                    alt="team logo"
                 />
 
                 <div className="profile-entry">
