@@ -6,13 +6,18 @@ import {SearchBar} from "./SearchBar";
 
 export class Main extends React.Component {
     state = {
-        playerId: nba.findPlayer("Lebron James").playerId,
-        playerInfo: {}
+        playerInfo: {
+            playerId: nba.findPlayer("Lebron James").playerId,
+        }
     }
 
     componentDidMount() {
-        const playerId = nba.findPlayer("Lebron James").playerId;
-        nba.stats.playerInfo({PlayerID: this.state.playerId}).then((info) => {
+        this.loadPlayerInfo("Lebron James");
+    }
+
+    loadPlayerInfo = (playerName) => {
+        const playerId = nba.findPlayer(playerName).playerId;
+        nba.stats.playerInfo({PlayerID: playerId}).then((info) => {
 
             //playerInfo 相当于把几个数据整合成一个数据了
             const playerInfo = Object.assign(
@@ -29,11 +34,11 @@ export class Main extends React.Component {
         console.log(this.state.playerInfo);
         return (
             <div className="main">
-                <SearchBar/>
+                <SearchBar loadPlayerInfo = {this.loadPlayerInfo}/>
                 <div className= "player">
                 <Profile playerId={this.state.playerId}
                          playerInfo={this.state.playerInfo}/>
-                <DataViewContainer playerId={this.state.playerId}/>
+                <DataViewContainer playerId={this.state.playerInfo.playerId}/>
                 </div>
             </div>
         )
